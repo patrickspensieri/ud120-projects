@@ -16,7 +16,32 @@
 """
 
 import pickle
+import numpy
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
+print "num people : ", len(enron_data)
+print "num features per person : ", len(enron_data.itervalues().next())
+numPoi = 0
+numSalary = 0
+numEmail = 0
+numTotalPayments = 0
+numPoiWithNaNTtlPayments = 0
+for dict in enron_data.itervalues():
+    if dict["poi"] == 1:
+        numPoi += 1
+        if dict["total_payments"] == "NaN":
+            numPoiWithNaNTtlPayments += 1
+    if dict["salary"] != "NaN":
+        numSalary += 1
+    if dict["email_address"] != "NaN":
+        numEmail += 1
+    if dict["total_payments"] != "NaN":
+        numTotalPayments += 1
+print "num poi : ", numPoi
+print "num salary : ", numSalary
+print "num email_address : ", numEmail
+print "James Prentice total_stock_value : ", enron_data["PRENTICE JAMES"]["total_stock_value"]
+print "num NaN total_payments", len(enron_data) - numTotalPayments
+print "num NaN total_payments AND poi: ", numPoiWithNaNTtlPayments
 
 

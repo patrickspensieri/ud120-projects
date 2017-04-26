@@ -1,3 +1,4 @@
+maildir/*
 .idea
 .DS_Store
 *.pyc

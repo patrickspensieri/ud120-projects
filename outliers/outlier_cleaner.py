@@ -10,11 +10,18 @@ def outlierCleaner(predictions, ages, net_worths):
         Return a list of tuples named cleaned_data where 
         each tuple is of the form (age, net_worth, error).
     """
-    
-    cleaned_data = []
 
-    ### your code goes here
+    print "type(locals()) : ", type(locals())
+    # iterate through al function arguments
+    # for arg in locals():
+    #     print "type(arg) : ", type(arg)
+    errors = (net_worths - predictions)**2
+    cleaned_data = zip(ages, net_worths, errors)
+    # lambda function set key to column 2, sort by error
+    # param reverse=True sets to descending
+    cleaned_data = sorted(cleaned_data, key=lambda x: x[2], reverse=False)
+    # everything except the last 9 items in list
+    cleaned_data = cleaned_data[:-9]
 
-    
     return cleaned_data
 
