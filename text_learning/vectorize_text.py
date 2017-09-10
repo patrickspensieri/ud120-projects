@@ -44,8 +44,9 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
 
             # use parseOutText to extract the text from the opened email
             # remove all instances of given words
+            # note: sshacklensf, cgermannsf added to list since causes overfitting in future quiz
             text = parseOutText(email)
-            replaceDic = ["sara", "shackleton", "chris", "germani"]
+            replaceDic = ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]
             for word in replaceDic:
                 text = text.replace(word, "")
 
